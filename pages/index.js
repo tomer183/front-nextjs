@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
 export default function Home(props) {
+    console.log('!!!', props);
     return (
         <div className={styles.container}>
             <Head>
@@ -13,7 +14,7 @@ export default function Home(props) {
 
             <main className={styles.main}>
                 <h1 className={styles.title}>
-                    I&#39;m <a href="https://nextjs.org">{props.host}</a>
+                    <a href="https://nextjs.org">{JSON.stringify(props)}</a>
                 </h1>
             </main>
         </div>

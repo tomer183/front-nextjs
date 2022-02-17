@@ -20,11 +20,11 @@ MyApp.getInitialProps = async (appCtx) => {
     }
 
     const host = req.headers.host.replace('www.', '').replace(':3000', '');
-    console.log({ host });
+    console.log('👿', { host });
 
     let API_URL = dev ? `http://api.${host}:3001` : `https://api.${host}`;
     let SERVICES_URL = dev ? `http://services.${host}:3002` : `https://services.${host}/`;
-    console.log({ API_URL, SERVICES_URL });
+    console.log('👿', { API_URL, SERVICES_URL });
 
     const url = `${API_URL}/domain`;
     const options = {
@@ -32,12 +32,16 @@ MyApp.getInitialProps = async (appCtx) => {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
     };
-
-    let response = await axios(url, options);
-    console.log(response.data);
-
-    // const data = { ...appProps, ...response.data, API_URL, SERVICES_URL };
-    // console.log('🟣', data);
-    return { ...appProps, host: response.data.host };
+    console.log('-----------');
+    let hostname = 'unknown';
+    try {
+        let response = await axios(url, options);
+        hostname = response.data.host;
+        console.log('🔸🔸🔸', 'TRY', response.data);
+    } catch (err) {
+        hostname = 'error';
+        console.log('🔸🔸🔸', 'CATCH', err.message);
+    }
+    return { ...appProps, A: 1, hostname: 111, host };
 };
 export default MyApp;
