@@ -5,7 +5,7 @@ import '../styles/globals.css';
 const dev = process.env.NODE_ENV == 'development';
 
 function MyApp({ Component, pageProps, ...props }) {
-    return <Component {...pageProps} host={props.host} />;
+    return <Component {...pageProps} {...props} />;
 }
 MyApp.getInitialProps = async (appCtx) => {
     console.log('🔸', { NODE_ENV: process.env.NODE_ENV, dev });
@@ -32,16 +32,16 @@ MyApp.getInitialProps = async (appCtx) => {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
     };
-    console.log('-----------');
-    let hostname = 'unknown';
+
+    let hostname = 'empty';
+
     try {
         let response = await axios(url, options);
         hostname = response.data.host;
-        console.log('🔸🔸', 'TRY', response.data);
     } catch (err) {
         hostname = 'error';
-        console.log('🔸🔸', 'CATCH', err.message);
     }
-    return { ...appProps, A: 1, hostname: 111, host };
+
+    return { ...appProps, hostname, host };
 };
 export default MyApp;

@@ -14,7 +14,7 @@ export default function Home(props) {
 
             <main className={styles.main}>
                 <h1 className={styles.title}>
-                    <a href="https://nextjs.org">{JSON.stringify(props)}</a>
+                    <a href="https://nextjs.org">{props.hostname}</a>
                 </h1>
             </main>
         </div>
