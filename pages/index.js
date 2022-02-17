@@ -13,7 +13,7 @@ export default function Home(props) {
 
             <main className={styles.main}>
                 <h1 className={styles.title}>
-                    I'm <a href="https://nextjs.org">{props.host}</a>
+                    I&#39;m <a href="https://nextjs.org">{props.host}</a>
                 </h1>
             </main>
         </div>
