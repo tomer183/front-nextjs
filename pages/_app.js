@@ -37,10 +37,10 @@ MyApp.getInitialProps = async (appCtx) => {
     try {
         let response = await axios(url, options);
         hostname = response.data.host;
-        console.log('🔸🔸🔸', 'TRY', response.data);
+        console.log('🔸🔸', 'TRY', response.data);
     } catch (err) {
         hostname = 'error';
-        console.log('🔸🔸🔸', 'CATCH', err.message);
+        console.log('🔸🔸', 'CATCH', err.message);
     }
     return { ...appProps, A: 1, hostname: 111, host };
 };
